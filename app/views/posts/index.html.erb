@@ -1,2 +1,22 @@
 <h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% if user_signed_in? %>
+  <%= button_to "Add Post", new_post_path, method: :get %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete%>
+<% else %>
+  <%= button_to "Sign in", new_user_session_path, method: :get %>
+<% end %>
+<% @posts.each do |post| %>
+  <div class="postcard">
+    <p>
+    <% if user_signed_in? %>
+      <%= post.user.email %>
+    <% end %>
+    </p>
+    <p>
+    <%= post.title %>
+    </p>
+    <p>
+    <%= post.body %>
+    </p>
+  </div>
+<% end %>
