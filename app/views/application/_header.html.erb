@@ -1,0 +1,12 @@
+<header class="bg-white">
+  <nav class="flex justify-around">
+    <h1 class="text-3xl">
+      Blog
+    </h1>
+    <% if user_signed_in? %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: ""%>
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path, method: :get, class: ""%>
+    <% end %> 
+  </nav>
+</header>

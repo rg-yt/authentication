@@ -1,22 +1,7 @@
-<h1>Posts#index</h1>
-<% if user_signed_in? %>
-  <%= button_to "Add Post", new_post_path, method: :get %>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete%>
-<% else %>
-  <%= button_to "Sign in", new_user_session_path, method: :get %>
-<% end %>
+<%= render "application/header" %>
+<div class="flex">
+  <h1>Ty's Electric Daydream</h1>
+  <p>I like to write about things I'm thinking about while I learn how to code. Learning new things on my way to living my dream.</p>
+</div>
 <% @posts.each do |post| %>
-  <div class="postcard">
-    <p>
-    <% if user_signed_in? %>
-      <%= post.user.email %>
-    <% end %>
-    </p>
-    <p>
-    <%= post.title %>
-    </p>
-    <p>
-    <%= post.body %>
-    </p>
-  </div>
 <% end %>
